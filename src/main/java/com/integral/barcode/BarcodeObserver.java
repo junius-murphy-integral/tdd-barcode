@@ -15,8 +15,8 @@ public class BarcodeObserver{
         }
     }
 
-        public String getLastBarcode()
-        {
-            return barcode;
-        }
+    public String getLastBarcode()
+    {
+        return barcode;
+    }
 }

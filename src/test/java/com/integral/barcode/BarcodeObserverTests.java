@@ -70,4 +70,28 @@ public class BarcodeObserverTests {
     }
 
 
+    @Test
+    public void testEmptyBarcode()
+    {
+        BarcodeObserver barcodeObserver = new BarcodeObserver();
+        BarcodeScanner barcodeScanner = new BarcodeScanner();
+
+        barcodeScanner.addObserver(barcodeObserver);
+        barcodeScanner.setBarcode("");
+
+        assertEquals("INVALID BARCODE", barcodeObserver.getLastBarcode());
+    }
+
+    @Test
+    public void testBarcodeWithRandomCharacters()
+    {
+        BarcodeObserver barcodeObserver = new BarcodeObserver();
+        BarcodeScanner barcodeScanner = new BarcodeScanner();
+
+        barcodeScanner.addObserver(barcodeObserver);
+        barcodeScanner.setBarcode("$&%^*#($*%&-_");
+
+        assertEquals("INVALID BARCODE", barcodeObserver.getLastBarcode());
+    }
+
 }
