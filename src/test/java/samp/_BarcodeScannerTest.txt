@@ -1,0 +1,18 @@
+package samp;
+
+import com.integral.barcode.BarcodeObserver;
+import com.integral.barcode.BarcodeScanner;
+import org.junit.Test;
+
+public class BarcodeScannerTest {
+
+    @Test
+    public void name() {
+        BarcodeObserver myObserver = new BarcodeObserver();
+        BarcodeScanner barcodeScanner = new BarcodeScanner();
+
+        barcodeScanner.subscribe(myObserver);
+
+        barcodeScanner.useBarcode("21564894894");
+    }
+}

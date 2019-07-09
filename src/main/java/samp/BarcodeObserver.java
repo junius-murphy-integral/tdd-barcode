@@ -1,7 +1,0 @@
-package samp;
-
-public interface BarcodeObserver {
-
-    void onBarcode(String code);
-
-}
