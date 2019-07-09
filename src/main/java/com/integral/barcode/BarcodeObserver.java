@@ -15,9 +15,4 @@ public class BarcodeObserver{
         }
         StoreDisplay.displayPrice(this.barcode);
     }
-
-    public String getLastBarcode()
-    {
-        return barcode;
-    }
 }
