@@ -9,14 +9,14 @@ public class BarcodeObserverTests {
     @Test
     public void testStandardBarcodeFormat()
     {
-
+        String barcode = "1111111111111";
         BarcodeObserver barcodeObserver = new BarcodeObserver();
         BarcodeScanner barcodeScanner = new BarcodeScanner();
 
         barcodeScanner.addObserver(barcodeObserver);
-        barcodeScanner.setBarcode("1111111111111");
+        barcodeScanner.setBarcode(barcode);
 
-        assertEquals( "1111111111111", barcodeObserver.getLastBarcode());
+        assertEquals( BarcodePrices.catalog.get(barcode), StoreDisplay.getLastDisplayedPrice());
     }
 
     @Test
