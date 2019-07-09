@@ -22,26 +22,28 @@ public class BarcodeObserverTests {
     @Test
     public void testStandardBarcodeFormatWithRealBarcode()
     {
-
+        String barcode = "9789332555402";
         BarcodeObserver barcodeObserver = new BarcodeObserver();
         BarcodeScanner barcodeScanner = new BarcodeScanner();
 
         barcodeScanner.addObserver(barcodeObserver);
-        barcodeScanner.setBarcode("9789332555402");
+        barcodeScanner.setBarcode(barcode);
 
-        assertEquals( "9789332555402", barcodeObserver.getLastBarcode());
+        assertEquals( BarcodePrices.catalog.get(barcode), StoreDisplay.getLastDisplayedPrice());
     }
     @Test
     public void testBarcodeWithHyphens()
     {
+        String originalBarcode = "978-93-325-5540-2";
+        String expectedBarcode = "9789332555402";
 
         BarcodeObserver barcodeObserver = new BarcodeObserver();
         BarcodeScanner barcodeScanner = new BarcodeScanner();
 
         barcodeScanner.addObserver(barcodeObserver);
-        barcodeScanner.setBarcode("978-93-325-5540-2");
+        barcodeScanner.setBarcode(originalBarcode);
 
-        assertEquals( "9789332555402", barcodeObserver.getLastBarcode());
+        assertEquals( BarcodePrices.catalog.get(expectedBarcode), StoreDisplay.getLastDisplayedPrice());
     }
 
     @Test
@@ -54,7 +56,7 @@ public class BarcodeObserverTests {
         barcodeScanner.addObserver(barcodeObserver);
         barcodeScanner.setBarcode("978933255540");
 
-        assertEquals( "INVALID BARCODE", barcodeObserver.getLastBarcode());
+        assertEquals( "INVALID BARCODE", StoreDisplay.getLastDisplayedPrice());
     }
 
     @Test
@@ -66,7 +68,7 @@ public class BarcodeObserverTests {
         barcodeScanner.addObserver(barcodeObserver);
         barcodeScanner.setBarcode("978933255540A");
 
-        assertEquals("INVALID BARCODE", barcodeObserver.getLastBarcode());
+        assertEquals( "INVALID BARCODE", StoreDisplay.getLastDisplayedPrice());
     }
 
 
@@ -79,7 +81,7 @@ public class BarcodeObserverTests {
         barcodeScanner.addObserver(barcodeObserver);
         barcodeScanner.setBarcode("");
 
-        assertEquals("INVALID BARCODE", barcodeObserver.getLastBarcode());
+        assertEquals( "INVALID BARCODE", StoreDisplay.getLastDisplayedPrice());
     }
 
     @Test
@@ -91,7 +93,7 @@ public class BarcodeObserverTests {
         barcodeScanner.addObserver(barcodeObserver);
         barcodeScanner.setBarcode("$&%^*#($*%&-_");
 
-        assertEquals("INVALID BARCODE", barcodeObserver.getLastBarcode());
+        assertEquals( "INVALID BARCODE", StoreDisplay.getLastDisplayedPrice());
     }
 
 }

@@ -12,8 +12,8 @@ public class BarcodeObserver{
         else
         {
             this.barcode = strippedBarcode;
-            StoreDisplay.displayPrice(barcode);
         }
+        StoreDisplay.displayPrice(this.barcode);
     }
 
     public String getLastBarcode()
