@@ -57,4 +57,17 @@ public class BarcodeObserverTests {
         assertEquals( "INVALID BARCODE", barcodeObserver.getLastBarcode());
     }
 
+    @Test
+    public void testBarcodeWithLetters()
+    {
+        BarcodeObserver barcodeObserver = new BarcodeObserver();
+        BarcodeScanner barcodeScanner = new BarcodeScanner();
+
+        barcodeScanner.addObserver(barcodeObserver);
+        barcodeScanner.setBarcode("978933255540A");
+
+        assertEquals("INVALID BARCODE", barcodeObserver.getLastBarcode());
+    }
+
+
 }
