@@ -44,4 +44,17 @@ public class BarcodeObserverTests {
         assertEquals( "9789332555402", barcodeObserver.getLastBarcode());
     }
 
+    @Test
+    public void testBarcodeWith12Digits()
+    {
+
+        BarcodeObserver barcodeObserver = new BarcodeObserver();
+        BarcodeScanner barcodeScanner = new BarcodeScanner();
+
+        barcodeScanner.addObserver(barcodeObserver);
+        barcodeScanner.setBarcode("978933255540");
+
+        assertEquals( "INVALID BARCODE", barcodeObserver.getLastBarcode());
+    }
+
 }
