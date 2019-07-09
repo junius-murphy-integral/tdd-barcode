@@ -31,17 +31,17 @@ public class BarcodeObserverTests {
 
         assertEquals( "9789332555402", barcodeObserver.getLastBarcode());
     }
-//    @Test
-//    public void testBarcodeWithHyphens()
-//    {
-//
-//        BarcodeObserver barcodeObserver = new BarcodeObserver();
-//        BarcodeScanner barcodeScanner = new BarcodeScanner();
-//
-//        barcodeScanner.addObserver(barcodeObserver);
-//        barcodeScanner.setBarcode("978-93-325-5540-2");
-//
-//        assertEquals( "9789332555402", barcodeObserver.getLastBarcode());
-//    }
+    @Test
+    public void testBarcodeWithHyphens()
+    {
+
+        BarcodeObserver barcodeObserver = new BarcodeObserver();
+        BarcodeScanner barcodeScanner = new BarcodeScanner();
+
+        barcodeScanner.addObserver(barcodeObserver);
+        barcodeScanner.setBarcode("978-93-325-5540-2");
+
+        assertEquals( "9789332555402", barcodeObserver.getLastBarcode());
+    }
 
 }
