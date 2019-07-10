@@ -15,18 +15,31 @@ public class Sale {
     public void onBarcode(String barcode){
         //SMELL Move input validation up the stack?
         barcode = barcode.replace("-", "");
-        String message;
         if(isInvalidBarcodeFormat(barcode))
         {
-            message = "INVALID BARCODE";
+            displayEmptyBarcodeMessage();
         }
         else if(!this.barcodeByPrices.containsKey(barcode)){
-            message = "Barcode does not exist in catalog";
+            displayBarcodeDoesntExistMessage();
         }
         else
         {
-            message = barcodeByPrices.get(barcode);
+            displayBarcodePriceMessage(barcode);
         }
+    }
+
+    private void displayBarcodePriceMessage(String barcode) {
+        String message = barcodeByPrices.get(barcode);
+        this.display.displayMessage(message);
+    }
+
+    private void displayBarcodeDoesntExistMessage() {
+       String message = "Barcode does not exist in catalog";
+        this.display.displayMessage(message);
+    }
+
+    private void displayEmptyBarcodeMessage() {
+        String message = "INVALID BARCODE";
         this.display.displayMessage(message);
     }
 
