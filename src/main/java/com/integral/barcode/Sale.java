@@ -13,20 +13,24 @@ public class Sale {
     }
 
     public void onBarcode(String barcode){
-        //SMELL Move input validation up the stack?
+        //SMELL Refused Bequest, Move input validation up the stack?
         barcode = removeHyphens(barcode);
         if(isInvalidBarcodeFormat(barcode))
         {
             displayEmptyBarcodeMessage();
+            return;
         }
-        else if(!this.barcodeByPrices.containsKey(barcode)){
+
+        String priceInText = findPrice(barcode);
+        if(priceInText == null){
             displayBarcodeDoesntExistMessage();
         }
         else
         {
-            displayBarcodePriceMessage(findPrice(barcode));
+            displayBarcodePriceMessage(priceInText);
         }
     }
+
 
     private String removeHyphens(String barcode){
         return barcode.replace("-", "");
