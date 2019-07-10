@@ -7,7 +7,7 @@ import java.util.Map;
 
 import static org.junit.Assert.*;
 
-public class BarcodeValidatorTests {
+public class SellOneItemTest {
 
     @Test
     public void testStandardBarcodeFormat()
