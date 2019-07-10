@@ -23,7 +23,7 @@ public class BarcodeValidatorTests {
         Sale sale = new Sale(display, catalog);
 
         sale.onBarcode(barcode);
-        assertEquals( "$1.11", sale.getDisplay().getLastDisplayedPrice());
+        assertEquals( "$1.11", sale.getDisplay().getLastDisplayedMessage());
 
     }
 
@@ -42,7 +42,7 @@ public class BarcodeValidatorTests {
 
         sale.onBarcode(barcode);
 
-        assertEquals("$9.99" , sale.getDisplay().getLastDisplayedPrice());
+        assertEquals("$9.99" , sale.getDisplay().getLastDisplayedMessage());
     }
     @Test
     public void testBarcodeWithHyphens()
@@ -61,7 +61,7 @@ public class BarcodeValidatorTests {
 
         sale.onBarcode(originalBarcode);
 
-        assertEquals( "$9.99", sale.getDisplay().getLastDisplayedPrice());
+        assertEquals( "$9.99", sale.getDisplay().getLastDisplayedMessage());
     }
 
     @Test
@@ -79,7 +79,7 @@ public class BarcodeValidatorTests {
 
         sale.onBarcode("978933255540");
 
-        assertEquals( "INVALID BARCODE", sale.getDisplay().getLastDisplayedPrice());
+        assertEquals( "INVALID BARCODE", sale.getDisplay().getLastDisplayedMessage());
     }
 
     @Test
@@ -96,7 +96,7 @@ public class BarcodeValidatorTests {
 
         sale.onBarcode("978933255540A");
 
-        assertEquals( "INVALID BARCODE", sale.getDisplay().getLastDisplayedPrice());
+        assertEquals( "INVALID BARCODE", sale.getDisplay().getLastDisplayedMessage());
     }
 
 
@@ -114,7 +114,7 @@ public class BarcodeValidatorTests {
 
         sale.onBarcode("");
 
-        assertEquals( "INVALID BARCODE", sale.getDisplay().getLastDisplayedPrice());
+        assertEquals( "INVALID BARCODE", sale.getDisplay().getLastDisplayedMessage());
     }
 
     @Test
@@ -131,7 +131,7 @@ public class BarcodeValidatorTests {
 
         sale.onBarcode("$&%^*#($*%&-_");
 
-        assertEquals( "INVALID BARCODE", sale.getDisplay().getLastDisplayedPrice());
+        assertEquals( "INVALID BARCODE", sale.getDisplay().getLastDisplayedMessage());
     }
 
     @Test
@@ -148,7 +148,7 @@ public class BarcodeValidatorTests {
 
         sale.onBarcode("1212121212121");
 
-        assertEquals( "Barcode does not exist in catalog", sale.getDisplay().getLastDisplayedPrice());
+        assertEquals( "Barcode does not exist in catalog", sale.getDisplay().getLastDisplayedMessage());
     }
 
 }

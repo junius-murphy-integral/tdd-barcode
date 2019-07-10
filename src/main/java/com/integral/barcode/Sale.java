@@ -26,7 +26,7 @@ public class Sale {
         {
             message = barcodeByPrices.get(barcode);
         }
-        this.display.displayPrice(message);
+        this.display.displayMessage(message);
     }
 
     public Display getDisplay(){

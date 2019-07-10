@@ -4,7 +4,7 @@ public class Display {
     static String lastDisplayedMessage;
 
 
-    void displayPrice(String barcode)
+    void displayMessage(String barcode)
     {
         lastDisplayedMessage = barcode;
 
@@ -12,7 +12,7 @@ public class Display {
     }
 
 
-    String getLastDisplayedPrice()
+    String getLastDisplayedMessage()
     {
         return lastDisplayedMessage;
     }
