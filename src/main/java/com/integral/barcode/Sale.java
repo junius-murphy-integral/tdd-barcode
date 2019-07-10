@@ -24,13 +24,16 @@ public class Sale {
         }
         else
         {
-            displayBarcodePriceMessage(barcode);
+            displayBarcodePriceMessage(findPrice(barcode));
         }
     }
 
-    private void displayBarcodePriceMessage(String barcode) {
-        String message = barcodeByPrices.get(barcode);
-        this.display.displayMessage(message);
+    private String findPrice(String barcode){
+        return barcodeByPrices.get(barcode);
+    }
+
+    private void displayBarcodePriceMessage(String priceInText) {
+        this.display.displayMessage(priceInText);
     }
 
     private void displayBarcodeDoesntExistMessage() {
