@@ -2,6 +2,7 @@ package com.integral.barcode;
 
 import org.junit.Test;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -67,15 +68,8 @@ public class SellOneItemTest {
     @Test
     public void testBarcodeWith12Digits()
     {
-
-        Map<String, String> catalog = new HashMap<String, String>() {{
-            put("1111111111111", "$1.11");
-            put("9789332555402", "$9.99");
-            put("2222222222222", "$2.22");
-            put("3333333333333", "$3.33");
-        }};
         Display display = new Display();
-        Sale sale = new Sale(display, catalog);
+        Sale sale = new Sale(display, Collections.emptyMap());
 
         sale.onBarcode("978933255540");
 
@@ -85,14 +79,8 @@ public class SellOneItemTest {
     @Test
     public void testBarcodeWithLetters()
     {
-        Map<String, String> catalog = new HashMap<String, String>() {{
-            put("1111111111111", "$1.11");
-            put("9789332555402", "$9.99");
-            put("2222222222222", "$2.22");
-            put("3333333333333", "$3.33");
-        }};
         Display display = new Display();
-        Sale sale = new Sale(display, catalog);
+        Sale sale = new Sale(display, Collections.emptyMap());
 
         sale.onBarcode("978933255540A");
 
@@ -103,14 +91,8 @@ public class SellOneItemTest {
     @Test
     public void testEmptyBarcode()
     {
-        Map<String, String> catalog = new HashMap<String, String>() {{
-            put("1111111111111", "$1.11");
-            put("9789332555402", "$9.99");
-            put("2222222222222", "$2.22");
-            put("3333333333333", "$3.33");
-        }};
         Display display = new Display();
-        Sale sale = new Sale(display, catalog);
+        Sale sale = new Sale(display, Collections.emptyMap());
 
         sale.onBarcode("");
 
@@ -120,14 +102,8 @@ public class SellOneItemTest {
     @Test
     public void testBarcodeWithRandomCharacters()
     {
-        Map<String, String> catalog = new HashMap<String, String>() {{
-            put("1111111111111", "$1.11");
-            put("9789332555402", "$9.99");
-            put("2222222222222", "$2.22");
-            put("3333333333333", "$3.33");
-        }};
         Display display = new Display();
-        Sale sale = new Sale(display, catalog);
+        Sale sale = new Sale(display, Collections.emptyMap());
 
         sale.onBarcode("$&%^*#($*%&-_");
 

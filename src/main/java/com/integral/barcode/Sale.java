@@ -13,6 +13,7 @@ public class Sale {
     }
 
     public void onBarcode(String barcode){
+        //SMELL Move input validation up the stack?
         barcode = barcode.replace("-", "");
         String message;
         if(isInvalidBarcodeFormat(barcode))
