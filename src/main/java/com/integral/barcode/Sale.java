@@ -14,7 +14,7 @@ public class Sale {
 
     public void onBarcode(String barcode){
         //SMELL Move input validation up the stack?
-        barcode = barcode.replace("-", "");
+        barcode = removeHyphens(barcode);
         if(isInvalidBarcodeFormat(barcode))
         {
             displayEmptyBarcodeMessage();
@@ -28,6 +28,9 @@ public class Sale {
         }
     }
 
+    private String removeHyphens(String barcode){
+        return barcode.replace("-", "");
+    }
     private String findPrice(String barcode){
         return barcodeByPrices.get(barcode);
     }
