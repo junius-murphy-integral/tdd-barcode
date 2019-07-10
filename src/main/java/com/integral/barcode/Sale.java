@@ -13,15 +13,19 @@ public class Sale {
     }
 
     public void onBarcode(String barcode){
-        final String errorMessage = "INVALID BARCODE";
         String strippedBarcode = barcode.replace("-", "");
         if(strippedBarcode.length() != 13 || !strippedBarcode.matches("[0-9]+"))
         {
-            barcode = errorMessage;
+            barcode = "INVALID BARCODE";
+        }
+        else if(!this.barcodeByPrices.containsKey(strippedBarcode)){
+            barcode = "Barcode does not exist in catalog";
         }
         else
         {
             barcode = strippedBarcode;
+            this.display.displayPrice(barcodeByPrices.get(barcode));
+            return;
         }
         this.display.displayPrice(barcode);
     }
