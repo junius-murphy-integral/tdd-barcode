@@ -14,7 +14,7 @@ public class BarcodeValidatorTests {
         Sale sale = new Sale();
 
         sale.addObserver(barcodeValidator);
-        sale.setBarcode(barcode);
+        sale.onBarcode(barcode);
 
         assertEquals( BarcodePrices.barcodeByPrices.get(barcode), StoreDisplay.getLastDisplayedPrice());
     }
@@ -27,7 +27,7 @@ public class BarcodeValidatorTests {
         Sale sale = new Sale();
 
         sale.addObserver(barcodeValidator);
-        sale.setBarcode(barcode);
+        sale.onBarcode(barcode);
 
         assertEquals( BarcodePrices.barcodeByPrices.get(barcode), StoreDisplay.getLastDisplayedPrice());
     }
@@ -41,7 +41,7 @@ public class BarcodeValidatorTests {
         Sale sale = new Sale();
 
         sale.addObserver(barcodeValidator);
-        sale.setBarcode(originalBarcode);
+        sale.onBarcode(originalBarcode);
 
         assertEquals( BarcodePrices.barcodeByPrices.get(expectedBarcode), StoreDisplay.getLastDisplayedPrice());
     }
@@ -54,7 +54,7 @@ public class BarcodeValidatorTests {
         Sale sale = new Sale();
 
         sale.addObserver(barcodeValidator);
-        sale.setBarcode("978933255540");
+        sale.onBarcode("978933255540");
 
         assertEquals( "INVALID BARCODE", StoreDisplay.getLastDisplayedPrice());
     }
@@ -66,7 +66,7 @@ public class BarcodeValidatorTests {
         Sale sale = new Sale();
 
         sale.addObserver(barcodeValidator);
-        sale.setBarcode("978933255540A");
+        sale.onBarcode("978933255540A");
 
         assertEquals( "INVALID BARCODE", StoreDisplay.getLastDisplayedPrice());
     }
@@ -79,7 +79,7 @@ public class BarcodeValidatorTests {
         Sale sale = new Sale();
 
         sale.addObserver(barcodeValidator);
-        sale.setBarcode("");
+        sale.onBarcode("");
 
         assertEquals( "INVALID BARCODE", StoreDisplay.getLastDisplayedPrice());
     }
@@ -91,7 +91,7 @@ public class BarcodeValidatorTests {
         Sale sale = new Sale();
 
         sale.addObserver(barcodeValidator);
-        sale.setBarcode("$&%^*#($*%&-_");
+        sale.onBarcode("$&%^*#($*%&-_");
 
         assertEquals( "INVALID BARCODE", StoreDisplay.getLastDisplayedPrice());
     }

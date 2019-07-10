@@ -9,7 +9,7 @@ public class Sale {
         observer = barcodeValidator;
     }
 
-    public void setBarcode(String barcode){
+    public void onBarcode(String barcode){
         observer.update(barcode);
     }
 
