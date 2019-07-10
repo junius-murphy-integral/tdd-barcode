@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -18,12 +17,12 @@ public class SellOneItemTest {
     @Before
     public void setUp() throws Exception{
         display = new Display();
-        sale = new Sale(display, new HashMap<String, String>() {{
+        sale = new Sale(display, new Catalog(new HashMap<String, String>() {{
             put("1111111111111", "$1.11");
             put("9789332555402", "$9.99");
             put("2222222222222", "$2.22");
             put("3333333333333", "$3.33");
-        }});
+        }}));
     }
 
 
@@ -54,7 +53,7 @@ public class SellOneItemTest {
     @Test
     public void testBarcodeWith12Digits()
     {
-        Sale sale = new Sale(display, Collections.emptyMap());
+        Sale sale = new Sale(display, new Catalog(Collections.emptyMap()));
         sale.onBarcode("978933255540");
         assertEquals( "INVALID BARCODE", sale.getDisplay().getLastDisplayedMessage());
     }
@@ -62,7 +61,7 @@ public class SellOneItemTest {
     @Test
     public void testBarcodeWithLetters()
     {
-        Sale sale = new Sale(display, Collections.emptyMap());
+        Sale sale = new Sale(display, new Catalog(Collections.emptyMap()));
         sale.onBarcode("978933255540A");
         assertEquals( "INVALID BARCODE", sale.getDisplay().getLastDisplayedMessage());
     }
@@ -71,7 +70,7 @@ public class SellOneItemTest {
     @Test
     public void testEmptyBarcode()
     {
-        Sale sale = new Sale(display, Collections.emptyMap());
+        Sale sale = new Sale(display, new Catalog(Collections.emptyMap()));
         sale.onBarcode("");
         assertEquals( "INVALID BARCODE", sale.getDisplay().getLastDisplayedMessage());
     }
@@ -79,7 +78,7 @@ public class SellOneItemTest {
     @Test
     public void testBarcodeWithRandomCharacters()
     {
-        Sale sale = new Sale(display, Collections.emptyMap());
+        Sale sale = new Sale(display, new Catalog(Collections.emptyMap()));
         sale.onBarcode("$&%^*#($*%&-_");
         assertEquals( "INVALID BARCODE", sale.getDisplay().getLastDisplayedMessage());
     }

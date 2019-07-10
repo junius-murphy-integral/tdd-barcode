@@ -7,8 +7,8 @@ public class Sale {
     private Map<String, String> barcodeByPrices;
     private Display display;
 
-    public Sale(Display display,Map<String, String> catalog){
-        this.barcodeByPrices = catalog;
+    public Sale(Display display, Catalog catalog){
+        this.barcodeByPrices = catalog.getBarcodeByPrices();
         this.display = display;
     }
 
@@ -17,17 +17,17 @@ public class Sale {
         barcode = removeHyphens(barcode);
         if(isInvalidBarcodeFormat(barcode))
         {
-            displayEmptyBarcodeMessage();
+            display.displayEmptyBarcodeMessage();
             return;
         }
 
         String priceInText = findPrice(barcode);
         if(priceInText == null){
-            displayBarcodeDoesntExistMessage();
+            display.displayBarcodeDoesntExistMessage();
         }
         else
         {
-            displayBarcodePriceMessage(priceInText);
+            display.displayBarcodePriceMessage(priceInText);
         }
     }
 
@@ -37,20 +37,6 @@ public class Sale {
     }
     private String findPrice(String barcode){
         return barcodeByPrices.get(barcode);
-    }
-
-    private void displayBarcodePriceMessage(String priceInText) {
-        this.display.displayMessage(priceInText);
-    }
-
-    private void displayBarcodeDoesntExistMessage() {
-       String message = "Barcode does not exist in catalog";
-        this.display.displayMessage(message);
-    }
-
-    private void displayEmptyBarcodeMessage() {
-        String message = "INVALID BARCODE";
-        this.display.displayMessage(message);
     }
 
     public Display getDisplay(){
