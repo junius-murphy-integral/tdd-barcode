@@ -1,6 +1,6 @@
 package samp;
 
-import com.integral.barcode.BarcodeObserver;
+import com.integral.barcode.BarcodeValidator;
 import com.integral.barcode.BarcodeScanner;
 import org.junit.Test;
 

@@ -9,13 +9,13 @@
 //
 //    List<BarcodeObserver> observers = new ArrayList<>();
 //
-//    public void subscribe(BarcodeObserver barcodeObserver) {
-//        observers.add(barcodeObserver);
+//    public void subscribe(BarcodeObserver barcodeValidator) {
+//        observers.add(barcodeValidator);
 //    }
 //
 //    public void useBarcode(String barcode) {
 //        lastValue = barcode;
-//        observers.forEach(barcodeObserver -> barcodeObserver.onBarcode(barcode));
+//        observers.forEach(barcodeValidator -> barcodeValidator.onBarcode(barcode));
 //    }
 //
 //    public String getLastValue() {

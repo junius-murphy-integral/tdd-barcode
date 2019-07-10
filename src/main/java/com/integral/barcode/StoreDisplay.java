@@ -6,7 +6,8 @@ public class StoreDisplay {
 
     static void displayPrice(String barcode)
     {
-        lastDisplayedPrice = barcode == "INVALID BARCODE"? barcode : BarcodePrices.catalog.get(barcode);
+        lastDisplayedPrice = barcode == "INVALID BARCODE"? barcode : BarcodePrices.barcodeByPrices.get(barcode);
+        System.out.println(lastDisplayedPrice);
     }
 
 

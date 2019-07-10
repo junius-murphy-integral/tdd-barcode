@@ -1,8 +1,8 @@
 package com.integral.barcode;
 
-public class BarcodeObserver{
+public class BarcodeValidator {
     String barcode;
-    private String errorMessage = "INVALID BARCODE";
+    private final String errorMessage = "INVALID BARCODE";
     public void update(String barcode){
         String strippedBarcode = barcode.replace("-", "");
         if(strippedBarcode.length() != 13 || !strippedBarcode.matches("[0-9]+"))

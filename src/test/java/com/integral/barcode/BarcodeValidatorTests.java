@@ -4,32 +4,32 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class BarcodeObserverTests {
+public class BarcodeValidatorTests {
 
     @Test
     public void testStandardBarcodeFormat()
     {
         String barcode = "1111111111111";
-        BarcodeObserver barcodeObserver = new BarcodeObserver();
+        BarcodeValidator barcodeValidator = new BarcodeValidator();
         BarcodeScanner barcodeScanner = new BarcodeScanner();
 
-        barcodeScanner.addObserver(barcodeObserver);
+        barcodeScanner.addObserver(barcodeValidator);
         barcodeScanner.setBarcode(barcode);
 
-        assertEquals( BarcodePrices.catalog.get(barcode), StoreDisplay.getLastDisplayedPrice());
+        assertEquals( BarcodePrices.barcodeByPrices.get(barcode), StoreDisplay.getLastDisplayedPrice());
     }
 
     @Test
     public void testStandardBarcodeFormatWithRealBarcode()
     {
         String barcode = "9789332555402";
-        BarcodeObserver barcodeObserver = new BarcodeObserver();
+        BarcodeValidator barcodeValidator = new BarcodeValidator();
         BarcodeScanner barcodeScanner = new BarcodeScanner();
 
-        barcodeScanner.addObserver(barcodeObserver);
+        barcodeScanner.addObserver(barcodeValidator);
         barcodeScanner.setBarcode(barcode);
 
-        assertEquals( BarcodePrices.catalog.get(barcode), StoreDisplay.getLastDisplayedPrice());
+        assertEquals( BarcodePrices.barcodeByPrices.get(barcode), StoreDisplay.getLastDisplayedPrice());
     }
     @Test
     public void testBarcodeWithHyphens()
@@ -37,23 +37,23 @@ public class BarcodeObserverTests {
         String originalBarcode = "978-93-325-5540-2";
         String expectedBarcode = "9789332555402";
 
-        BarcodeObserver barcodeObserver = new BarcodeObserver();
+        BarcodeValidator barcodeValidator = new BarcodeValidator();
         BarcodeScanner barcodeScanner = new BarcodeScanner();
 
-        barcodeScanner.addObserver(barcodeObserver);
+        barcodeScanner.addObserver(barcodeValidator);
         barcodeScanner.setBarcode(originalBarcode);
 
-        assertEquals( BarcodePrices.catalog.get(expectedBarcode), StoreDisplay.getLastDisplayedPrice());
+        assertEquals( BarcodePrices.barcodeByPrices.get(expectedBarcode), StoreDisplay.getLastDisplayedPrice());
     }
 
     @Test
     public void testBarcodeWith12Digits()
     {
 
-        BarcodeObserver barcodeObserver = new BarcodeObserver();
+        BarcodeValidator barcodeValidator = new BarcodeValidator();
         BarcodeScanner barcodeScanner = new BarcodeScanner();
 
-        barcodeScanner.addObserver(barcodeObserver);
+        barcodeScanner.addObserver(barcodeValidator);
         barcodeScanner.setBarcode("978933255540");
 
         assertEquals( "INVALID BARCODE", StoreDisplay.getLastDisplayedPrice());
@@ -62,10 +62,10 @@ public class BarcodeObserverTests {
     @Test
     public void testBarcodeWithLetters()
     {
-        BarcodeObserver barcodeObserver = new BarcodeObserver();
+        BarcodeValidator barcodeValidator = new BarcodeValidator();
         BarcodeScanner barcodeScanner = new BarcodeScanner();
 
-        barcodeScanner.addObserver(barcodeObserver);
+        barcodeScanner.addObserver(barcodeValidator);
         barcodeScanner.setBarcode("978933255540A");
 
         assertEquals( "INVALID BARCODE", StoreDisplay.getLastDisplayedPrice());
@@ -75,10 +75,10 @@ public class BarcodeObserverTests {
     @Test
     public void testEmptyBarcode()
     {
-        BarcodeObserver barcodeObserver = new BarcodeObserver();
+        BarcodeValidator barcodeValidator = new BarcodeValidator();
         BarcodeScanner barcodeScanner = new BarcodeScanner();
 
-        barcodeScanner.addObserver(barcodeObserver);
+        barcodeScanner.addObserver(barcodeValidator);
         barcodeScanner.setBarcode("");
 
         assertEquals( "INVALID BARCODE", StoreDisplay.getLastDisplayedPrice());
@@ -87,10 +87,10 @@ public class BarcodeObserverTests {
     @Test
     public void testBarcodeWithRandomCharacters()
     {
-        BarcodeObserver barcodeObserver = new BarcodeObserver();
+        BarcodeValidator barcodeValidator = new BarcodeValidator();
         BarcodeScanner barcodeScanner = new BarcodeScanner();
 
-        barcodeScanner.addObserver(barcodeObserver);
+        barcodeScanner.addObserver(barcodeValidator);
         barcodeScanner.setBarcode("$&%^*#($*%&-_");
 
         assertEquals( "INVALID BARCODE", StoreDisplay.getLastDisplayedPrice());
