@@ -4,13 +4,11 @@ import java.util.Map;
 
 public class Sale {
 
-    private Map<String, String> barcodeByPrices;
     private Display display;
     private Catalog catalog;
 
     public Sale(Display display, Catalog catalog){
         this.catalog = catalog;
-        this.barcodeByPrices = catalog.getBarcodeByPrices();
         this.display = display;
     }
 
