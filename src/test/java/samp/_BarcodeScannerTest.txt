@@ -1,7 +1,7 @@
 package samp;
 
 import com.integral.barcode.BarcodeValidator;
-import com.integral.barcode.BarcodeScanner;
+import com.integral.barcode.Sale;
 import org.junit.Test;
 
 public class BarcodeScannerTest {
@@ -9,10 +9,10 @@ public class BarcodeScannerTest {
     @Test
     public void name() {
         BarcodeObserver myObserver = new BarcodeObserver();
-        BarcodeScanner barcodeScanner = new BarcodeScanner();
+        BarcodeScanner sale = new BarcodeScanner();
 
-        barcodeScanner.subscribe(myObserver);
+        sale.subscribe(myObserver);
 
-        barcodeScanner.useBarcode("21564894894");
+        sale.useBarcode("21564894894");
     }
 }

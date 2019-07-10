@@ -1,6 +1,6 @@
 package com.integral.barcode;
 
-public class BarcodeScanner{
+public class Sale {
 
     BarcodeValidator observer;
 

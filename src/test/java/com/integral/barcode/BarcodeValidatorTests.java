@@ -11,10 +11,10 @@ public class BarcodeValidatorTests {
     {
         String barcode = "1111111111111";
         BarcodeValidator barcodeValidator = new BarcodeValidator();
-        BarcodeScanner barcodeScanner = new BarcodeScanner();
+        Sale sale = new Sale();
 
-        barcodeScanner.addObserver(barcodeValidator);
-        barcodeScanner.setBarcode(barcode);
+        sale.addObserver(barcodeValidator);
+        sale.setBarcode(barcode);
 
         assertEquals( BarcodePrices.barcodeByPrices.get(barcode), StoreDisplay.getLastDisplayedPrice());
     }
@@ -24,10 +24,10 @@ public class BarcodeValidatorTests {
     {
         String barcode = "9789332555402";
         BarcodeValidator barcodeValidator = new BarcodeValidator();
-        BarcodeScanner barcodeScanner = new BarcodeScanner();
+        Sale sale = new Sale();
 
-        barcodeScanner.addObserver(barcodeValidator);
-        barcodeScanner.setBarcode(barcode);
+        sale.addObserver(barcodeValidator);
+        sale.setBarcode(barcode);
 
         assertEquals( BarcodePrices.barcodeByPrices.get(barcode), StoreDisplay.getLastDisplayedPrice());
     }
@@ -38,10 +38,10 @@ public class BarcodeValidatorTests {
         String expectedBarcode = "9789332555402";
 
         BarcodeValidator barcodeValidator = new BarcodeValidator();
-        BarcodeScanner barcodeScanner = new BarcodeScanner();
+        Sale sale = new Sale();
 
-        barcodeScanner.addObserver(barcodeValidator);
-        barcodeScanner.setBarcode(originalBarcode);
+        sale.addObserver(barcodeValidator);
+        sale.setBarcode(originalBarcode);
 
         assertEquals( BarcodePrices.barcodeByPrices.get(expectedBarcode), StoreDisplay.getLastDisplayedPrice());
     }
@@ -51,10 +51,10 @@ public class BarcodeValidatorTests {
     {
 
         BarcodeValidator barcodeValidator = new BarcodeValidator();
-        BarcodeScanner barcodeScanner = new BarcodeScanner();
+        Sale sale = new Sale();
 
-        barcodeScanner.addObserver(barcodeValidator);
-        barcodeScanner.setBarcode("978933255540");
+        sale.addObserver(barcodeValidator);
+        sale.setBarcode("978933255540");
 
         assertEquals( "INVALID BARCODE", StoreDisplay.getLastDisplayedPrice());
     }
@@ -63,10 +63,10 @@ public class BarcodeValidatorTests {
     public void testBarcodeWithLetters()
     {
         BarcodeValidator barcodeValidator = new BarcodeValidator();
-        BarcodeScanner barcodeScanner = new BarcodeScanner();
+        Sale sale = new Sale();
 
-        barcodeScanner.addObserver(barcodeValidator);
-        barcodeScanner.setBarcode("978933255540A");
+        sale.addObserver(barcodeValidator);
+        sale.setBarcode("978933255540A");
 
         assertEquals( "INVALID BARCODE", StoreDisplay.getLastDisplayedPrice());
     }
@@ -76,10 +76,10 @@ public class BarcodeValidatorTests {
     public void testEmptyBarcode()
     {
         BarcodeValidator barcodeValidator = new BarcodeValidator();
-        BarcodeScanner barcodeScanner = new BarcodeScanner();
+        Sale sale = new Sale();
 
-        barcodeScanner.addObserver(barcodeValidator);
-        barcodeScanner.setBarcode("");
+        sale.addObserver(barcodeValidator);
+        sale.setBarcode("");
 
         assertEquals( "INVALID BARCODE", StoreDisplay.getLastDisplayedPrice());
     }
@@ -88,10 +88,10 @@ public class BarcodeValidatorTests {
     public void testBarcodeWithRandomCharacters()
     {
         BarcodeValidator barcodeValidator = new BarcodeValidator();
-        BarcodeScanner barcodeScanner = new BarcodeScanner();
+        Sale sale = new Sale();
 
-        barcodeScanner.addObserver(barcodeValidator);
-        barcodeScanner.setBarcode("$&%^*#($*%&-_");
+        sale.addObserver(barcodeValidator);
+        sale.setBarcode("$&%^*#($*%&-_");
 
         assertEquals( "INVALID BARCODE", StoreDisplay.getLastDisplayedPrice());
     }
