@@ -6,8 +6,10 @@ public class Sale {
 
     private Map<String, String> barcodeByPrices;
     private Display display;
+    private Catalog catalog;
 
     public Sale(Display display, Catalog catalog){
+        this.catalog = catalog;
         this.barcodeByPrices = catalog.getBarcodeByPrices();
         this.display = display;
     }
@@ -21,7 +23,7 @@ public class Sale {
             return;
         }
 
-        String priceInText = findPrice(barcode);
+        String priceInText = catalog.findPrice(barcode);
         if(priceInText == null){
             display.displayBarcodeDoesntExistMessage();
         }
@@ -34,9 +36,6 @@ public class Sale {
 
     private String removeHyphens(String barcode){
         return barcode.replace("-", "");
-    }
-    private String findPrice(String barcode){
-        return barcodeByPrices.get(barcode);
     }
 
     public Display getDisplay(){

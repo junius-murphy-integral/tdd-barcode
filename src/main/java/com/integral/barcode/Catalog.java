@@ -12,4 +12,8 @@ public class Catalog {
     public Map<String, String> getBarcodeByPrices() {
         return barcodeByPrices;
     }
+
+    public String findPrice(String barcode){
+        return barcodeByPrices.get(barcode);
+    }
 }
