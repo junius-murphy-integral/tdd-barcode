@@ -48,7 +48,6 @@ public class BarcodeValidatorTests {
     public void testBarcodeWithHyphens()
     {
         String originalBarcode = "978-93-325-5540-2";
-        String expectedBarcode = "9789332555402";
 
 
         Map<String, String> catalog = new HashMap<String, String>() {{

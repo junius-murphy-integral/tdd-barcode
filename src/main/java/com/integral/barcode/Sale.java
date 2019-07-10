@@ -13,26 +13,28 @@ public class Sale {
     }
 
     public void onBarcode(String barcode){
-        String strippedBarcode = barcode.replace("-", "");
-        if(strippedBarcode.length() != 13 || !strippedBarcode.matches("[0-9]+"))
+        barcode = barcode.replace("-", "");
+        String message;
+        if(isInvalidBarcodeFormat(barcode))
         {
-            barcode = "INVALID BARCODE";
+            message = "INVALID BARCODE";
         }
-        else if(!this.barcodeByPrices.containsKey(strippedBarcode)){
-            barcode = "Barcode does not exist in catalog";
+        else if(!this.barcodeByPrices.containsKey(barcode)){
+            message = "Barcode does not exist in catalog";
         }
         else
         {
-            barcode = strippedBarcode;
-            this.display.displayPrice(barcodeByPrices.get(barcode));
-            return;
+            message = barcodeByPrices.get(barcode);
         }
-        this.display.displayPrice(barcode);
+        this.display.displayPrice(message);
     }
 
     public Display getDisplay(){
         return this.display;
     }
 
+    private boolean isInvalidBarcodeFormat(String barcode){
+        return barcode.length() != 13 || !barcode.matches("[0-9]+");
+    }
 
 }
