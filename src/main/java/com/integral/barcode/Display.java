@@ -1,17 +1,17 @@
 package com.integral.barcode;
 
-public class StoreDisplay {
+public class Display {
     static String lastDisplayedPrice;
 
 
-    static void displayPrice(String barcode)
+    void displayPrice(String barcode)
     {
         lastDisplayedPrice = barcode == "INVALID BARCODE"? barcode : BarcodePrices.barcodeByPrices.get(barcode);
         System.out.println(lastDisplayedPrice);
     }
 
 
-    static String getLastDisplayedPrice()
+    String getLastDisplayedPrice()
     {
         return lastDisplayedPrice;
     }
