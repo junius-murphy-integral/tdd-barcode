@@ -16,7 +16,7 @@ public class NonEmptyCatalogTest {
 
 
     @Before
-    public void setUp() throws Exception{
+    public void setUp() throws Exception {
         display = new Display();
         sale = new Sale(display, new Catalog(new HashMap<String, String>() {{
             put("1111111111111", "1.11");
@@ -28,51 +28,47 @@ public class NonEmptyCatalogTest {
 
 
     @Test
-    public void testStandardBarcodeFormat()
-    {
+    public void testStandardBarcodeFormat() {
         String barcode = "1111111111111";
         sale.onBarcode(barcode);
         sale.endSale();
-        assertEquals( "$1.11", sale.getDisplay().getLastDisplayedMessage());
+        assertEquals("$1.11", sale.getDisplay().getLastDisplayedMessage());
 
     }
 
     @Test
-    public void testStandardBarcodeFormatWithRealBarcode()
-    {
+    public void testStandardBarcodeFormatWithRealBarcode() {
         String barcode = "9789332555402";
         sale.onBarcode(barcode);
         sale.endSale();
-        assertEquals("$9.99" , sale.getDisplay().getLastDisplayedMessage());
+        assertEquals("$9.99", sale.getDisplay().getLastDisplayedMessage());
     }
+
     @Test
-    public void testBarcodeWithHyphens()
-    {
+    public void testBarcodeWithHyphens() {
         String originalBarcode = "978-93-325-5540-2";
         sale.onBarcode(originalBarcode);
         sale.endSale();
-        assertEquals( "$9.99", sale.getDisplay().getLastDisplayedMessage());
+        assertEquals("$9.99", sale.getDisplay().getLastDisplayedMessage());
     }
 
     @Test
-    public void testValidBarcodeThatDoesNotExistsInCatalog()
-    {
+    public void testValidBarcodeThatDoesNotExistsInCatalog() {
         sale.onBarcode("1212121212121");
-        assertEquals( "Barcode does not exist in catalog", sale.getDisplay().getLastDisplayedMessage());
+        assertEquals("Barcode does not exist in catalog", sale.getDisplay().getLastDisplayedMessage());
     }
 
     @Test
-    public void testBuyingThreeItems()
-    {
+    public void testBuyingThreeItems() {
         sale.onBarcode("1111111111111");
         sale.onBarcode("2222222222222");
         sale.onBarcode("3333333333333");
         sale.endSale();
-        assertEquals( "$6.66", sale.getDisplay().getLastDisplayedMessage());
+        assertEquals("$6.66", sale.getDisplay().getLastDisplayedMessage());
     }
 
     @Test
-    public void testBuyingThreeItemsWhereOneItemIsNotInCatalog(){
+    public void testBuyingThreeItemsWhereOneItemIsNotInCatalog() {
         sale.onBarcode("1111111111111");
         sale.onBarcode("3333333333333");
         sale.onBarcode("5555555555555");
@@ -81,7 +77,7 @@ public class NonEmptyCatalogTest {
     }
 
     @Test
-    public void testBuyingThreeItemsWhereAllItemsAreNotInCatalog(){
+    public void testBuyingThreeItemsWhereAllItemsAreNotInCatalog() {
         sale.onBarcode("5555555555555");
         sale.onBarcode("5555555555555");
         sale.onBarcode("5555555555555");
@@ -89,4 +85,9 @@ public class NonEmptyCatalogTest {
         assertEquals("$0", sale.getDisplay().getLastDisplayedMessage());
     }
 
+    @Test
+    public void testSaleWithNoBarcodeScans() {
+        sale.endSale();
+        assertEquals("$0", sale.getDisplay().getLastDisplayedMessage());
+    }
 }
