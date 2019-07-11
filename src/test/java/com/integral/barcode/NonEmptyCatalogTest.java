@@ -1,6 +1,7 @@
 package com.integral.barcode;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Collections;
@@ -18,10 +19,10 @@ public class NonEmptyCatalogTest {
     public void setUp() throws Exception{
         display = new Display();
         sale = new Sale(display, new Catalog(new HashMap<String, String>() {{
-            put("1111111111111", "$1.11");
-            put("9789332555402", "$9.99");
-            put("2222222222222", "$2.22");
-            put("3333333333333", "$3.33");
+            put("1111111111111", "1.11");
+            put("9789332555402", "9.99");
+            put("2222222222222", "2.22");
+            put("3333333333333", "3.33");
         }}));
     }
 
@@ -64,7 +65,17 @@ public class NonEmptyCatalogTest {
         sale.onBarcode("2222222222222");
         sale.onBarcode("3333333333333");
         sale.endSale();
-        assertEquals( "6.66", sale.getDisplay().getLastDisplayedMessage());
+        assertEquals( "$6.66", sale.getDisplay().getLastDisplayedMessage());
+    }
+
+    @Test
+    @Ignore
+    public void testBuyingThreeItemsWhereOneItemIsNotInCatalog(){
+        sale.onBarcode("1111111111111");
+        sale.onBarcode("3333333333333");
+        sale.onBarcode("5555555555555");
+        sale.endSale();
+        assertEquals("$4.44", sale.getDisplay().getLastDisplayedMessage());
     }
 
 }

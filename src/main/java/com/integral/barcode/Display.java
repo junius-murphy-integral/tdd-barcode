@@ -4,11 +4,10 @@ public class Display {
     static String lastDisplayedMessage;
 
 
-    void displayMessage(String barcode)
+    void displayMessage(String message)
     {
-        lastDisplayedMessage = barcode;
-
-        System.out.println(lastDisplayedMessage);
+        System.out.println(message);
+        lastDisplayedMessage = message;
     }
 
 
@@ -18,7 +17,7 @@ public class Display {
     }
 
     public void displayBarcodePriceMessage(String priceInText) {
-        displayMessage(priceInText);
+        displayMessage("$" +priceInText);
     }
 
     public void displayEmptyBarcodeMessage() {
