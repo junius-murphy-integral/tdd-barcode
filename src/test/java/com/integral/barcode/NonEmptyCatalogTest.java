@@ -57,4 +57,14 @@ public class NonEmptyCatalogTest {
         assertEquals( "Barcode does not exist in catalog", sale.getDisplay().getLastDisplayedMessage());
     }
 
+    @Test
+    public void testBuyingThreeItems()
+    {
+        sale.onBarcode("1111111111111");
+        sale.onBarcode("2222222222222");
+        sale.onBarcode("3333333333333");
+        sale.endSale();
+        assertEquals( "6.66", sale.getDisplay().getLastDisplayedMessage());
+    }
+
 }
