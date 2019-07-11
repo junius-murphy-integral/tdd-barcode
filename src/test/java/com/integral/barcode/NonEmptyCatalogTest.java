@@ -80,4 +80,13 @@ public class NonEmptyCatalogTest {
         assertEquals("$4.44", sale.getDisplay().getLastDisplayedMessage());
     }
 
+    @Test
+    public void testBuyingThreeItemsWhereAllItemsAreNotInCatalog(){
+        sale.onBarcode("5555555555555");
+        sale.onBarcode("5555555555555");
+        sale.onBarcode("5555555555555");
+        sale.endSale();
+        assertEquals("$0", sale.getDisplay().getLastDisplayedMessage());
+    }
+
 }
