@@ -69,7 +69,6 @@ public class NonEmptyCatalogTest {
     }
 
     @Test
-    @Ignore
     public void testBuyingThreeItemsWhereOneItemIsNotInCatalog(){
         sale.onBarcode("1111111111111");
         sale.onBarcode("3333333333333");

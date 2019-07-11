@@ -1,11 +1,10 @@
 package com.integral.barcode;
 
-import java.util.Map;
-
 public class Sale {
 
     private Display display;
     private Catalog catalog;
+    private String currentSaleTotalInText = "0";
 
     public Sale(Display display, Catalog catalog){
         this.catalog = catalog;
@@ -21,12 +20,16 @@ public class Sale {
             return;
         }
 
+
         String priceInText = catalog.findPrice(barcode);
         if(priceInText == null){
             display.displayBarcodeDoesntExistMessage();
         }
         else
         {
+            String newItemPrice = catalog.findPrice(barcode);
+            Float currentSaleTotal = (Float.parseFloat(currentSaleTotalInText) + Float.parseFloat(newItemPrice));
+            currentSaleTotalInText = currentSaleTotal.toString();
             display.displayBarcodePriceMessage(priceInText);
         }
     }
@@ -46,6 +49,7 @@ public class Sale {
 
     public void endSale() {
         display.displayBarcodePriceMessage("6.66");
+        display.displayBarcodePriceMessage(currentSaleTotalInText);
         return;
     }
 }
