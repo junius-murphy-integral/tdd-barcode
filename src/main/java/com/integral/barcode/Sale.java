@@ -21,16 +21,14 @@ public class Sale {
         }
 
 
-        String priceInText = catalog.findPrice(barcode);
-        if(priceInText == null){
+        String newItemPrice = catalog.findPrice(barcode);
+        if(newItemPrice == null){
             display.displayBarcodeDoesntExistMessage();
         }
         else
         {
-            String newItemPrice = catalog.findPrice(barcode);
             Float currentSaleTotal = (Float.parseFloat(currentSaleTotalInText) + Float.parseFloat(newItemPrice));
             currentSaleTotalInText = currentSaleTotal.toString();
-            //display.displayBarcodePriceMessage(priceInText);
         }
     }
 
@@ -48,7 +46,6 @@ public class Sale {
     }
 
     public void endSale() {
-        //display.displayBarcodePriceMessage("6.66");
         display.displayBarcodePriceMessage(currentSaleTotalInText);
         return;
     }
