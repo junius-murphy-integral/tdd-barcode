@@ -32,6 +32,7 @@ public class NonEmptyCatalogTest {
     {
         String barcode = "1111111111111";
         sale.onBarcode(barcode);
+        sale.endSale();
         assertEquals( "$1.11", sale.getDisplay().getLastDisplayedMessage());
 
     }
@@ -41,6 +42,7 @@ public class NonEmptyCatalogTest {
     {
         String barcode = "9789332555402";
         sale.onBarcode(barcode);
+        sale.endSale();
         assertEquals("$9.99" , sale.getDisplay().getLastDisplayedMessage());
     }
     @Test
@@ -48,6 +50,7 @@ public class NonEmptyCatalogTest {
     {
         String originalBarcode = "978-93-325-5540-2";
         sale.onBarcode(originalBarcode);
+        sale.endSale();
         assertEquals( "$9.99", sale.getDisplay().getLastDisplayedMessage());
     }
 

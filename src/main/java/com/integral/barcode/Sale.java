@@ -30,7 +30,7 @@ public class Sale {
             String newItemPrice = catalog.findPrice(barcode);
             Float currentSaleTotal = (Float.parseFloat(currentSaleTotalInText) + Float.parseFloat(newItemPrice));
             currentSaleTotalInText = currentSaleTotal.toString();
-            display.displayBarcodePriceMessage(priceInText);
+            //display.displayBarcodePriceMessage(priceInText);
         }
     }
 
@@ -48,7 +48,7 @@ public class Sale {
     }
 
     public void endSale() {
-        display.displayBarcodePriceMessage("6.66");
+        //display.displayBarcodePriceMessage("6.66");
         display.displayBarcodePriceMessage(currentSaleTotalInText);
         return;
     }
