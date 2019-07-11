@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 import static org.junit.Assert.*;
 
-public class SellOneItemTest {
+public class NonEmptyCatalogTest {
 
     private Display display;
     private Sale sale;
@@ -48,39 +48,6 @@ public class SellOneItemTest {
         String originalBarcode = "978-93-325-5540-2";
         sale.onBarcode(originalBarcode);
         assertEquals( "$9.99", sale.getDisplay().getLastDisplayedMessage());
-    }
-
-    @Test
-    public void testBarcodeWith12Digits()
-    {
-        Sale sale = new Sale(display, new Catalog(Collections.emptyMap()));
-        sale.onBarcode("978933255540");
-        assertEquals( "INVALID BARCODE", sale.getDisplay().getLastDisplayedMessage());
-    }
-
-    @Test
-    public void testBarcodeWithLetters()
-    {
-        Sale sale = new Sale(display, new Catalog(Collections.emptyMap()));
-        sale.onBarcode("978933255540A");
-        assertEquals( "INVALID BARCODE", sale.getDisplay().getLastDisplayedMessage());
-    }
-
-
-    @Test
-    public void testEmptyBarcode()
-    {
-        Sale sale = new Sale(display, new Catalog(Collections.emptyMap()));
-        sale.onBarcode("");
-        assertEquals( "INVALID BARCODE", sale.getDisplay().getLastDisplayedMessage());
-    }
-
-    @Test
-    public void testBarcodeWithRandomCharacters()
-    {
-        Sale sale = new Sale(display, new Catalog(Collections.emptyMap()));
-        sale.onBarcode("$&%^*#($*%&-_");
-        assertEquals( "INVALID BARCODE", sale.getDisplay().getLastDisplayedMessage());
     }
 
     @Test
