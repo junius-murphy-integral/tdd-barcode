@@ -1,10 +1,8 @@
 package com.integral.barcode;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
-import java.util.Collections;
 import java.util.HashMap;
 
 import static org.junit.Assert.*;
