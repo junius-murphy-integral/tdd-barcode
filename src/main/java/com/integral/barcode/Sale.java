@@ -49,4 +49,10 @@ public class Sale {
         display.displayBarcodePriceMessage(currentSaleTotalInText);
         return;
     }
+
+    public void addToTotalPriceManually(String price) {
+        Float currentTotalPrice = Float.parseFloat(price) + Float.parseFloat(this.currentSaleTotalInText);
+        this.currentSaleTotalInText = currentTotalPrice.toString();
+        return;
+    }
 }

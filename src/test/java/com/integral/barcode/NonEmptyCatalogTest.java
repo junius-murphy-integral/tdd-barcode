@@ -88,4 +88,14 @@ public class NonEmptyCatalogTest {
         sale.endSale();
         assertEquals("$0", sale.getDisplay().getLastDisplayedMessage());
     }
+
+    @Test
+    public void testManualPriceInput(){
+        sale.onBarcode("1111111111111");
+        sale.onBarcode("3333333333333");
+        sale.onBarcode("4040404040404");
+        sale.addToTotalPriceManually("40.00");
+        sale.endSale();
+        assertEquals("$44.44", sale.getDisplay().getLastDisplayedMessage());
+    }
 }
